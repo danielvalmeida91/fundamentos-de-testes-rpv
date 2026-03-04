@@ -6,6 +6,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsx watch index.ts",
+    "dev:ecommerce": "tsx watch cenarios/ecommerce/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
