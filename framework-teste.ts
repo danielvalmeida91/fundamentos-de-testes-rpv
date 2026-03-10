@@ -6,9 +6,9 @@ interface IValidar {
 
 export const validar = ({ atual, descricao, esperado }: IValidar) => {
     if (atual === esperado) {
-        console.log(`✔[PASSOU] - ${descricao}`)
+        console.log(`✔ [PASSOU] - ${descricao}`)
     } else {
-        console.error(`❌[FALHOU] - ${descricao}`)
+        console.error(`❌ [FALHOU] - ${descricao}`)
         console.warn(`Esperava: ${esperado} | Recebeu: ${atual}`)
     }
 }

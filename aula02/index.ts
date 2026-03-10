@@ -33,7 +33,6 @@ const usuarios = [
     }
 ]
 
-
 const emprestar = ({ livros, usuario }: IEmprestar): boolean => {
     const usuarioExiste = usuarios.filter(user => user.id === usuario.id)
     if (!(usuarioExiste.length > 0)) return false
@@ -49,7 +48,6 @@ validar({
         livros: [
             { id: 1, titulo: 'O Senhor dos Anéis - A Sociedade do Anel' },
             { id: 2, titulo: 'O Senhor dos Anéis - As Duas Torres' },
-            { id: 3, titulo: 'O Senhor dos Anéis - O Retorno do Rei' },
             { id: 3, titulo: 'O Senhor dos Anéis - O Retorno do Rei' },
         ]
     }
@@ -82,8 +80,3 @@ validar({
     }
     )
 })
-// validar({
-//     esperado: 10,
-//     descricao: 'Teste inicial',
-//     atual: 10,
-// })
