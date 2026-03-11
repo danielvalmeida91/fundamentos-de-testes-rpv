@@ -1,4 +1,5 @@
 import { validar } from '../framework-teste'
+import { randomUUID, UUID } from 'node:crypto'
 
 interface IUsuario {
     id: number
@@ -13,6 +14,13 @@ interface ILivro {
 interface IEmprestar {
     usuario: IUsuario
     livros: ILivro[]
+}
+
+interface IEmprestimo {
+    id: string;
+    livros: ILivro[];
+    usuario: IUsuario;
+    dataAtual: Date;
 }
 
 // Sistema de Empréstimo de Livros
@@ -33,14 +41,31 @@ const usuarios = [
     }
 ]
 
+const emprestimos: IEmprestimo[] = []
+
 const emprestar = ({ livros, usuario }: IEmprestar): boolean => {
     const usuarioExiste = usuarios.filter(user => user.id === usuario.id)
     if (!(usuarioExiste.length > 0)) return false
     if (livros.length > 3) return false
-    // Criar empréstimo -> Salvar no local Storage ( Criar testes para isso !)
-    // id unico do emprestimo, id usuario, livros, data, 
+    const emprestimo: IEmprestimo = {
+        id: randomUUID(),
+        livros,
+        usuario,
+        dataAtual: new Date()
+    }
+    console.log(emprestimo)
+    emprestimos.push(emprestimo)
     return true
 }
+
+emprestar({
+    usuario: { id: 1, nome: 'Daniel' },
+    livros: [
+        { id: 1, titulo: 'O Senhor dos Anéis - A Sociedade do Anel' },
+        { id: 2, titulo: 'O Senhor dos Anéis - As Duas Torres' },
+        { id: 3, titulo: 'O Senhor dos Anéis - O Retorno do Rei' },
+    ]
+})
 
 // criar o cenário de devolução
 // levar em consideração que eu estou devolvendo realmente o que peguei
